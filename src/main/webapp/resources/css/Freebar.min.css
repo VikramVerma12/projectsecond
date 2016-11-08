@@ -1,0 +1,45 @@
+/* space between the bar and your content */
+
+
+.bar {
+  text-align: center;
+  padding: 8px;
+  padding-top: 0px;
+  background-color: #ffff84;
+  /* set it at will according to your message's length in small devices */
+  max-height: inherit; 
+  position: relative;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  color: #f5f5f5;
+ /*  border-bottom: thick ridge rgba(0, 0, 0, 0.5); 
+  -webkit-box-shadow: 0px 2px 13px 0.5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 2px 13px 0.5px rgba(0, 0, 0, 0.3); */
+  display: none;
+  z-index: 3008;
+}
+
+#head-image {
+  margin-right: 1%;
+  position: relative;
+  top: 8px;
+}
+
+#text { position: relative;
+color: green;
+}
+
+#ok {
+  float: right;
+  margin-top: 6px;
+  margin-right: 10px;
+  font-size: 15px;
+  background-color: green;
+}
+
+#ok a {
+  color: #3EAAEE;
+  text-decoration: none;
+}
+

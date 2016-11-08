@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns="http://java.sun.com/xml/ns/javaee"
+ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+          http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+ id="WebApp_ID" version="3.0">
+ 
+ <display-name>Spring MVC Application</display-name>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/servletDispatcher-servlet.xml,
+		/WEB-INF/applicationContext.xml,
+		/WEB-INF/spring-config.xml
+		</param-value>
+	</context-param>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+    <servlet>
+        <servlet-name>servletDispatcher</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>         
+        <load-on-startup>1</load-on-startup>
+         <async-supported>true</async-supported>
+    </servlet>
+ 
+    <servlet-mapping>
+        <servlet-name>servletDispatcher</servlet-name>
+        <url-pattern>/</url-pattern>  
+    </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>servletDispatcher</servlet-name>
+    <url-pattern>*.css</url-pattern>
+</servlet-mapping>
+
+<servlet-mapping>
+    <servlet-name>servletDispatcher</servlet-name>
+    <url-pattern>*.js</url-pattern>
+</servlet-mapping>
+
+<filter>
+<filter-name>springSecurityFilterChain</filter-name>
+<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+
+</filter>
+
+<filter-mapping>
+<filter-name>springSecurityFilterChain</filter-name>
+<url-pattern>/*</url-pattern>
+</filter-mapping>
+
+<!-- Cometd Servlet -->
+<filter>
+     <filter-name>continuation</filter-name>
+     <filter-class>org.eclipse.jetty.continuation.ContinuationFilter</filter-class>
+</filter>
+<filter-mapping>
+     <filter-name>continuation</filter-name>
+     <url-pattern>/SocialNetworking/*</url-pattern>
+</filter-mapping>
+
+	<servlet>
+		<servlet-name>SocialNetworking</servlet-name>
+		<servlet-class>org.cometd.annotation.AnnotationCometdServlet</servlet-class>
+		<init-param>
+			<param-name>timeout</param-name>
+			<param-value>20000</param-value>
+		</init-param>
+		<init-param>
+			<param-name>interval</param-name>
+			<param-value>0</param-value>
+		</init-param>
+		<init-param>
+			<param-name>maxInterval</param-name>
+			<param-value>10000</param-value>
+		</init-param>
+		<init-param>
+			<param-name>maxLazyTimeout</param-name>
+			<param-value>5000</param-value>
+		</init-param>
+		<init-param>
+			<param-name>long-polling.multiSessionInterval</param-name>
+			<param-value>2000</param-value>
+		</init-param>
+		<init-param>
+			<param-name>logLevel</param-name>
+			<param-value>0</param-value>
+		</init-param>
+		<init-param>
+			<param-name>transports</param-name>
+			<param-value>org.cometd.websocket.server.WebSocketTransport</param-value>
+		</init-param>
+		 <init-param>
+			<param-name>services</param-name>
+			<param-value>com.advik.service.impl.ChatService</param-value>
+		</init-param>
+		
+	</servlet>
+ 	  <servlet-mapping>
+		<servlet-name>SocialNetworking</servlet-name>
+		<url-pattern>/SocialNetworking/*</url-pattern>
+	</servlet-mapping> 
+ 
+
+ 
+</web-app>

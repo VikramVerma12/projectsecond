@@ -1,0 +1,14 @@
+/*=== Attached CSS Files
+=============================================================================*/
+@import url("reset.css");
+@import url("base.css");
+@import url("layout.css");
+@import url("drop_downs.css");
+@import url("common.css");
+@import url("skin.css");
+.msg-val {
+	color: red;
+}
+.msg-success {
+	color: green;
+}
